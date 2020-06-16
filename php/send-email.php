@@ -41,7 +41,7 @@ if($_POST) {
    $mail = mail($to, $subject, $message, $headers);
 
 	if ($mail) { echo "OK"; }
-   else { echo "MESSAGE SEND I WILL GET BACK YOU SOON"; }
+   else { echo "Something went wrong. Please try again."; }
 
 }
 
