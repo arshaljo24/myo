@@ -26,7 +26,7 @@ if($_POST) {
 	 $message .= "Email address: " . $email . "<br />";
    $message .= "Message: <br />";
    $message .= nl2br($contact_message);
-   $message .= "<br /> ----- <br /> This email was sent from your site " . url(https://arshaljo24.github.io/myp/) . " contact form. <br />";
+   $message .= "<br /> ----- <br /> This email was sent from your site " . url() . " contact form. <br />";
 
    // Set From: header
    $from =  $name . " <" . $email . ">";
