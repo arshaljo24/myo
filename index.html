@@ -276,20 +276,20 @@
           <div class="row justify-content-between">
             
             <div class="col-md-6">
-              <form  action="https://formspree.io/mrgyoooz" method="POST" class="form-outline-style-v1" id="contactForm">
+              <form method="POST" class="form-outline-style-v1" id="contactForm">
                 <div class="form-group row mb-0">
 
                   <div class="col-lg-6 form-group gsap-reveal">
                     <label for="name">Name</label>
-                    <input name="name" type="text" class="form-control" id="name">
+                    <input name="entry.589339435" type="text" class="form-control" id="name">
                   </div>
                   <div class="col-lg-6 form-group gsap-reveal">
                     <label for="email">Email</label>
-                    <input name="replyto" type="email" class="form-control" id="email">
+                    <input name="entry.1165375877" type="email" class="form-control" id="email">
                   </div>
                   <div class="col-lg-12 form-group gsap-reveal">
                     <label for="message">Write your message...</label>
-                    <textarea name="message" id="message" cols="30" rows="7" class="form-control"></textarea>
+                    <textarea name="entry.1878899072" id="message" cols="30" rows="7" class="form-control"></textarea>
                   </div>
                 </div>
                 <div class="form-group row gsap-reveal">
@@ -299,7 +299,50 @@
                     </div>
                   </div>
               </form>
-              
+              <script>
+function postToGoogle() {
+                var field1 = $("#name").val();
+                var field2 = $("#email").val();
+                var field3 = $("#message").val();
+               
+				if(field1 == ""){
+					alert('Please Fill Your Name');
+					document.getElementById("name").focus();
+					return false;
+				}
+				if(field2 == ""){
+					alert('Please Fill Your Email');
+					document.getElementById("email").focus();
+					return false;
+				}
+				if(field3 == "" || field3.length > 10 || field3.length < 10){
+					alert('Please Fill Your Mobile Number');
+					document.getElementById("message").focus();
+					return false;
+				}
+
+
+		
+	
+                $.ajax({
+                    url: "https://docs.google.com/forms/d/e/1FAIpQLScYO9fOXCeHeTndScm5ZoC_aEf_BeiSTqogsZdF1_mBsvp55w/formResponse?",
+					data: {"entry.589339435": field1, "entry.1165375877": field2, "entry.1878899072": field3,},
+                    type: "POST",
+                    dataType: "xml",
+                    success: function(d)
+					{
+					},
+					error: function(x, y, z)
+						{
+
+							$('#success-msg').show();
+							$('#form').hide();
+							
+						}
+                });
+				return false;
+            }
+</script>
             </div>
 
             <div class="col-md-4">
