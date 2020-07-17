@@ -117,7 +117,7 @@
         <div class="container">
           
           <div class="section-heading-wrap text-center mb-5">
-            <h2 class="heading-h2 text-center divider"><span class="gsap-reveal">About Me..</span></h2>
+            <h2 class="heading-h2 text-center divider"><span class="gsap-reveal">About Me</span></h2>
             <span class="gsap-reveal">
             <img src="images/divider.png" alt="divider" width="76">
             </span>
@@ -326,7 +326,7 @@ function postToGoogle() {
 	
                 $.ajax({
                     url: "https://docs.google.com/forms/d/e/1FAIpQLScYO9fOXCeHeTndScm5ZoC_aEf_BeiSTqogsZdF1_mBsvp55w/formResponse?",
-					data: {"entry.589339435": field1, "entry.1165375877": field2, "entry.1878899072": field3,},
+					data: {"entry.589339435": field1, "entry.1165375877": field2, "entry.1878899072": field3 },
                     type: "POST",
                     dataType: "xml",
                     success: function(d)
