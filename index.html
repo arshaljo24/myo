@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
     <link rel="stylesheet" href="css/vendor/jquery.fancybox.min.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Theme Style -->
     <link rel="stylesheet" href="css/style.css">
@@ -276,7 +276,7 @@
           <div class="row justify-content-between">
             
             <div class="col-md-6">
-              <form method="POST" class="form-outline-style-v1" id="contactForm">
+              <form method="POST" class="form-outline-style-v1" id="submit-form">
                 <div class="form-group row mb-0">
 
                   <div class="col-lg-6 form-group gsap-reveal">
@@ -300,49 +300,24 @@
                   </div>
               </form>
               <script>
-function postToGoogle() {
-                var field1 = $("#name").val();
-                var field2 = $("#email").val();
-                var field3 = $("#message").val();
-               
-				if(field1 == ""){
-					alert('Please Fill Your Name');
-					document.getElementById("name").focus();
-					return false;
-				}
-				if(field2 == ""){
-					alert('Please Fill Your Email');
-					document.getElementById("email").focus();
-					return false;
-				}
-				if(field3 == "" || field3.length > 10 || field3.length < 10){
-					alert('Please Fill Your Mobile Number');
-					document.getElementById("message").focus();
-					return false;
-				}
-
-
-		
-	
-                $.ajax({
-                    url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLScYO9fOXCeHeTndScm5ZoC_aEf_BeiSTqogsZdF1_mBsvp55w/formResponse?",
-					data: {"entry.589339435": field1, "entry.1165375877": field2, "entry.1878899072": field3 },
-                    type: "POST",
-                    dataType: "xml",
-                    success: function(d)
-					{
-					},
-					error: function(x, y, z)
-						{
-
-							$('#success-msg').show();
-							$('#form').hide();
-							
-						}
-                });
-				return false;
-            }
-</script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbws6DMi8ZrwqRGk767vxJNbxFNmtX-1cocmSikw620cQtgxQSQ/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
             </div>
 
             <div class="col-md-4">
